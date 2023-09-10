@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  vertical-align: top;
+	box-sizing: border-box;
+}
+body {
+	overflow-x: hidden;
+	font-size: 10px;
+	font-family: 'NotoSans_R';
+	word-break: keep-all;
+}
+ul, ol, dl {
+  list-style: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	vertical-align: top;
+	text-decoration: none;
+	color: #000000;
+}
+i, em, address {
+	font-style: normal;
+	font-weight: normal;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+button{
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
