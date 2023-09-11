@@ -1,8 +1,9 @@
 
 $(function () {
 	$(window).on('scroll', function () {
-		const header = $('#header');
-		if (this.scrollY >= 50) {
+		let scr = $(window).scrollTop();
+		let header = $('#header');
+		if (scr >= 50) {
 			header.addClass('scroll_header')
 		} else {
 			header.removeClass('scroll_header')
@@ -25,35 +26,26 @@ $(function () {
 
 
 
-// 클리하시 밑으로 이동 버튼
-$(function(){	
-	$(".scroll_icon").on("click",function(){
-		$("html,body").animate({
-				scrollTop:$('#about').offset().top
-		},100);
-	});
-});
 
 
 /* SCROLL SECTION ACTIVE */
 $(function(){
-
-	let menu = $(".menu > ul > li");
-  let content = $(".main > .section");
+	let menu = $(".nav_menu > .nav_list > .nav_item");
+  let content = $("#main > div");
   menu.click(function(e){
 		e.preventDefault();
-		let tg=$(this);
-		let i=tg.index();
+		let tg = $(this);
+		let i = tg.index();
 
-		let section=content.eq(i);
-		let tt=section.offset().top;
-		$("html,body").stop().animate({scrollTop:tt},500);
+		let section = content.eq(i);
+		let tt = section.offset().top;
+		$("html,body").stop().animate({scrollTop:tt},100);
   });
   $(window).scroll(function(){
-		let sct=$(window).scrollTop();		
+		let sct = $(window).scrollTop();		
 		content.each(function(){
-			let tg=$(this);
-			let i=tg.index();
+			let tg = $(this);
+			let i = tg.index();
 			if(tg.offset().top <= sct+50){
 				menu.find(">a").removeClass("active_link");
 				menu.find(">a").eq(i).addClass("active_link");
@@ -66,7 +58,7 @@ $(function(){
 // 	$(window).on('scroll', function () {
 // 		const sections = document.querySelectorAll('.section[id]')
 // 		$(function () {
-// 			const scrollY = window.pageYOffset
+// 			const scrollY = $(window).scrollTop();	
 			
 // 			sections.forEach(current => {
 // 				const sectionHeight = current.offsetHeight;
@@ -116,8 +108,8 @@ $(function(){
   win.on('scroll',$.throttle(1000/15,function(){
     let ts = $(this)
     let sct = ts.scrollTop();
-    let s_content = $(".graph_box");
-    let charts = s_content.find(".praph");
+    let s_content = $(".graph_content");
+    let charts = s_content.find(".graph_data");
     
 		var skillOffsetTop=charts.offset().top;
 
@@ -129,7 +121,7 @@ $(function(){
           let percentNumber = chart.find(".skill_p .num");
           let percentData = percentNumber.text();
           percentNumber.text(0);
-          $({percent:0}).delay(500*i).animate({percent:percentData},{
+          $({percent:0}).delay(150*i).animate({percent:percentData},{
             duration: 1000,
             progress: function(){
               let now = this.percent;
@@ -182,7 +174,6 @@ $(function () {
 		}	
 	})
 	$('.scroll_up').on('click', function () {
-		console.log('ok')
 		$('html').scrollTop(0);
 	})
 })

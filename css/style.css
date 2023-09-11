@@ -76,7 +76,7 @@ body{
 }
 .container{}
 
-.main{
+#main{
 	max-width: 1028px;
 	margin: 0 auto;
 }
@@ -85,17 +85,22 @@ body{
 	padding: 4.5rem 2rem 1rem;
 }
 
-.section_title{
+.section_title, .section_subtitle{
 	text-align: center;
 }
 
 .section_title{
-	margin-bottom: 2rem;
+	margin-bottom: .5rem;
 	font-size: var(--font-h1);
 	font-weight: var(--font-semibold);
 	color: var(--first-color);
 }
-
+.section_subtitle {
+	margin-bottom: 2rem;
+	display: block;
+	font-size: var(--font-smaller);
+	color: var(--text-color-light);
+}
 .grid{
 	display: grid;
 	gap: 1rem;
@@ -307,12 +312,9 @@ body{
 .about_modal{
 	position: fixed;
 	inset: 0;
-	/* background-color: rgba(14, 27, 46, 0.9); */
 	padding: 2rem 1rem;
-	display: grid;
+	display: none;
 	place-items: center;
-	visibility: hidden;
-	opacity: 0;
 	z-index: var(--z-modal);
 }
 .about_modal_content{
@@ -359,8 +361,7 @@ body{
 
 /*Active modal*/
 .active_modal{
-	opacity: 1;
-	visibility: visible;
+	display: grid;
 }
 .active_modal .dimmed{
 	position: fixed;
@@ -385,6 +386,60 @@ body{
 }
 
 /* skills */
+.skills_container{
+	row-gap: 2rem;
+	padding-top: 1rem;
+	transition: .4s;
+}
+
+.skills_content{
+	display: none;
+	padding: 1.5rem;
+	background-color: var(--container-color);
+	border-radius: 1.25rem;
+}
+
+.skills_title{
+	font-size: var(--normal-font-size);
+	font-weight: var(--font-medium);
+	color: var(--first-color);
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+.skills_box{
+	display: flex;
+	justify-content: center;
+	column-gap: 2.5rem;
+}
+
+.skills_group{
+	display: grid;
+	align-content: flex-start;
+	row-gap: 2.5rem;
+}
+
+.skills_data{
+	display: flex;
+	column-gap: 0.5rem;
+}
+
+.skills .bxs-badge-check{
+	font-size: 1rem;
+	color: var(--first-color);
+}
+
+.skills_name{
+	font-size: var(--normal-font-size);
+	font-weight: var(--font-medium);
+	line-height: 16px;
+}
+
+.skills_level{
+	font-size: var(--tiny-font-size);
+}
+
+
 .graph_content{
 	background-color: var(--container-color);
 	padding: 1.5rem;
@@ -555,6 +610,14 @@ body{
 	display: grid;
 	gap: 1rem;
 }
+.contact_card_item, .cv_down{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: .4rem;
+	margin-bottom: .5rem;
+}
 .contact_card{
 	background-color: var(--container-color);
 	padding: 1.5rem 0.5rem;
@@ -564,9 +627,14 @@ body{
 .contact_card_icon{
 	font-size: 2rem;
 	color: var(--title-color);
-	margin-bottom: 0.25rem;
 }
-.contact_card_title, .contact_card_data{
+.contact_card_item.phone > *{
+	color: var(--first-color);
+}
+.contact_card_title{
+	font-size: var(--font-h2);
+} 
+.contact_card_data{
 	font-size: var(--font-small);
 }
 .contact_card_title{
@@ -574,26 +642,27 @@ body{
 	display: block;
 	font-weight: var(--font-medium);
 	color: var(--title-color);
-	margin-bottom: 0.5rem;
 }
 
 .contact_card_data{
 	display: block;
 }
-.cv_down:hover span::before{
+.cv_down:hover::before{
 	content: "";
 	position: absolute;
-	left: 50%;
-	bottom: 0;
-	transform: translateX(-50%);
-	width: 100px;
-	height: 2px;
-	background-color: #fff;
-	opacity: 0.2;
+	bottom: -.2rem;
+	display: block;
+	width: 200px;
+	height: 1px;
+	background: linear-gradient(45deg, var(--first-color), var(--body-color));
+	animation: cv_line .4s linear;
 }
-
+@keyframes cv_line {
+	from {width: 0;}
+	to {width: 200px;}
+}
 /* footer */
-.footer{
+#footer{
 	box-shadow: 0px -10px 10px -8px rgba(160, 151, 255, 0.1)
 }
 .footer_container{
@@ -606,13 +675,13 @@ body{
 	color: var(--text-color);
 	font-size: var(--font-h1);
 	font-weight: var(--font-semibold);
+	font-style: italic;
 }
 .footer_copy{
 	display: block;
 	color: var(--text-color-lightr);
 	text-align: center;
 	font-size: var(--font-tiny);
-	font-style: italic;
 }
 
 /* scroll up */
@@ -781,6 +850,12 @@ body{
 	}
 	.home_data{
 		height: 450px;
+	}	
+	.skills_content{
+		display: block;
+	}
+	.skills_container{
+		grid-template-columns: 560px;
 	}
 	.work_filters{
 		width: 650px;
@@ -856,8 +931,10 @@ body{
 	.about_description{
 		padding: 0 4rem 0 0;
 	}
-	.graph_content{
-		padding: 4rem 2rem;
+
+	.skills_container{
+		grid-template-columns: repeat(2, 450px );
+		column-gap: 3rem;
 	}
 	.work_filters{
 		width: 1000px;
@@ -970,7 +1047,7 @@ body.light_theme{
 .light_theme .contact_card_data{
 	color: var(--first-color);
 }
-.light_theme .footer{
+.light_theme #footer{
 	background: #265c5e;
 }
 .light_theme .footer_title, .light_theme .footer_copy{
