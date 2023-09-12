@@ -15,11 +15,11 @@ $(function () {
 	$('input[name=them]:checkbox').on('click', function () {
 		const checked = $('input[name=them]:checkbox').is(':checked')
 		if (checked) {
-			$('body').addClass('light_theme')
-			$('#theme_button').attr('class','bx bx-moon theme_button')
-		} else {
-			$('body').removeClass('light_theme')
+			$('body').addClass('dark_theme')
 			$('#theme_button').attr('class','bx bx-sun theme_button')
+		} else {
+			$('body').removeClass('dark_theme')
+			$('#theme_button').attr('class','bx bx-moon theme_button')
 		}	
 	})
 })
