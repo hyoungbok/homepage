@@ -12,14 +12,15 @@ $(function () {
 })
 
 $(function () {
+	$('body').addClass('dark_theme')
 	$('input[name=them]:checkbox').on('click', function () {
 		const checked = $('input[name=them]:checkbox').is(':checked')
 		if (checked) {
-			$('body').addClass('dark_theme')
-			$('#theme_button').attr('class','bx bx-sun theme_button')
-		} else {
 			$('body').removeClass('dark_theme')
 			$('#theme_button').attr('class','bx bx-moon theme_button')
+		} else {
+			$('body').addClass('dark_theme')
+			$('#theme_button').attr('class','bx bx-sun theme_button')
 		}	
 	})
 })
@@ -105,38 +106,43 @@ $(function(){
   let win = $(window);
   let chartBool = true;
 
-  win.on('scroll',$.throttle(1000/15,function(){
-    let ts = $(this)
-    let sct = ts.scrollTop();
-    let s_content = $(".graph_content");
-    let charts = s_content.find(".graph_data");
+	win.on('scroll', $.throttle(1000 / 15, function () {
+		let ts = $(this)
+		let sct = ts.scrollTop();
+		let s_content = $(".graph_content");
+		let charts = s_content.find(".graph_data");
     
-		var skillOffsetTop=charts.offset().top;
+		var skillOffsetTop = charts.offset().top;
 
-    if(sct >= skillOffsetTop-800){
-      if(chartBool){
-        charts.each(function(i){
-          let chart = $(this);
-          let chartBar = chart.find(".graph_color").css({width:'0%'});
-          let percentNumber = chart.find(".skill_p .num");
-          let percentData = percentNumber.text();
-          percentNumber.text(0);
-          $({percent:0}).delay(150*i).animate({percent:percentData},{
-            duration: 1000,
-            progress: function(){
-              let now = this.percent;
-              chartBar.css({width:now+'%'});
-              percentNumber.text(Math.floor(now));
-            }
-          })
-        })
-      }
-      chartBool = false;
+		if (sct >= skillOffsetTop - 800) {
+			if (chartBool) {
+				charts.each(function (i) {
+					let chart = $(this);
+					let chartBar = chart.find(".graph_color").css({ width: '0%' });
+					let percentNumber = chart.find(".skill_p .num");
+					let percentData = percentNumber.text();
+					percentNumber.text(0);
+					$({ percent: 0 }).delay(150 * i).animate({ percent: percentData }, {
+						duration: 1000,
+						progress: function () {
+							let now = this.percent;
+							chartBar.css({ width: now + '%' });
+							percentNumber.text(Math.floor(now));
+						}
+					})
+				})
+			}
+			chartBool = false;
     
-    } else {
-      chartBool = true;
-    }
-  }))
+		} else {
+			chartBool = true;
+		}
+	}));
+
+	$(".skills_data").click(function () {
+		$(".skills_data").removeClass("active");
+		$(this).addClass("active");
+	});
 });
 
 

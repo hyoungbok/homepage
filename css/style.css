@@ -62,14 +62,12 @@ body{
 
 /*=============== SCROLL BAR ===============*/
 ::-webkit-scrollbar{
-	width: 0.6rem;
-	border-radius: 0.5rem;
+	width: 0.5rem;
 	background-color: #5c5969;
 }
 
 ::-webkit-scrollbar-thumb{
 	background-color: #272525;
-	border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover{
@@ -427,21 +425,31 @@ body{
 
 .skills_box{
 	display: flex;
-	justify-content: center;
-	column-gap: 2.5rem;
+	justify-content: start;
 }
 
 .skills_group{
 	display: grid;
-	align-content: flex-start;
-	row-gap: 2.5rem;
-}
+	gap: 1.5rem;
+}  
 
 .skills_data{
 	display: flex;
 	column-gap: 0.5rem;
+	cursor: pointer;
 }
-
+.skills_data .skills_text{
+	display: none;
+	margin-top: 10px;
+	font-size: var(--font-small);
+}
+.skills_data.active i,
+.skills_data.active .skills_name{
+	color: #ff8888;
+}
+.skills_data.active .skills_text{
+	display: block;
+}
 .skills .bxs-badge-check{
 	font-size: 1rem;
 	color: var(--first-color);
@@ -873,9 +881,6 @@ body{
 	.home_data{
 		height: 450px;
 	}	
-	.skills_content{
-		display: block;
-	}
 	.skills_container{
 		grid-template-columns: 560px;
 	}
@@ -956,10 +961,20 @@ body{
 	.about_description{
 		padding: 0 4rem 0 0;
 	}
-
+	.graph_content{
+		padding: 2rem;
+	}
+	.graph_group {
+    row-gap: 1.5rem;
+	}
+	.skills_content{
+		display: block;
+		padding: 2rem;
+	}
+	
 	.skills_container{
-		grid-template-columns: repeat(2, 450px );
-		column-gap: 3rem;
+		grid-template-columns: 680px;
+		row-gap: 3rem;
 	}
 	.work_filters{
 		width: 1000px;
@@ -967,7 +982,6 @@ body{
 		margin-right: auto;
 	}
 	.work_container{
-		
 		grid-template-columns: repeat(3, minmax(20px, max-content));
 		justify-content: space-evenly;
 		gap: 2rem;
