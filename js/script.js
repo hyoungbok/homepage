@@ -138,11 +138,13 @@ $(function(){
 			chartBool = true;
 		}
 	}));
-
+	
+	$(".skills_data.active").find(".skills_text").css({ display: "block" });
 	$(".skills_data").click(function () {
-		$(".skills_data").removeClass("active");
-		$(this).addClass("active");
+		$(".skills_data").removeClass("active").find(".skills_text").slideUp();
+		$(this).addClass("active").find(".skills_text").stop().slideDown();
 	});
+	
 });
 
 
