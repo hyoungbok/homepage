@@ -387,7 +387,7 @@ body{
 
 }
 .active_modal .about_modal_content{
-	max-width: 490px;
+	max-width: 550px;
 	max-height: calc(100vh - 150px);
 	overflow-x: auto;
 	-ms-overflow-style: none; /* IE and Edge */
