@@ -295,7 +295,7 @@ body{
 }
 .about_description{
 	color: var(--title-color);
-	font-size: var(--font-medium);
+	font-weight: var(--font-medium);
 	padding: 0 1rem;
 	margin-bottom: 2rem;
 }
@@ -1036,7 +1036,7 @@ body.dark_theme{
 	color: var(--title-color);
 }
 .dark_theme .theme_button{
-	color: var(-- title-color);
+	color: var(--title-color);
 }
 .dark_theme .theme_button:hover{
 	color: var(--first-color);
