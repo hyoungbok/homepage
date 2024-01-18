@@ -330,18 +330,26 @@ body{
 .about_modal_content{
 	position: relative;
 	background-color: var(--body-color);
-	padding: 2.5rem 1.5rem 2.5rem;
 	border-radius: 1rem;
 	z-index: var(--z-modal);
+}
+.about_header{
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 2.5rem 0 1rem;
+	background-color: var(--body-color);
+	box-shadow: 0px -13px 10px 2px #ffffff
 }
 .about_modal_title{
 	font-size: var(--font-h2);
 	font-weight: var(--font-medium);
 	color: var(--first-color);
-	margin-bottom: 2rem;
 }
 .about_modal_list{
 	display: grid;
+	padding: 1.5rem 1.5rem 2.5rem;
 	row-gap: 0.75rem;
 }
 .about_modal_item{
